@@ -1,0 +1,27 @@
+# TinyRTX ignore files, anywhere in the tree
+#
+# Assembler listings
+*.lst
+#
+# Assembler object files
+*.o
+#
+# Assembler error files
+*.err
+#
+# Linker object file
+*.cof
+#
+# Machince code file
+*.hex
+#
+# Version control file
+*.mcs
+#
+# Visio diagrams
+*.vsd
+#
+# Windows metafiles (Visio diagrams prepped for Word)
+*.wmf
+#
+

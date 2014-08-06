@@ -1,0 +1,135 @@
+// Linker command file for 16F877
+//
+////////////////////////////////////////////////////////////////////////////////
+// TinyRTX Filename: TinyRTX-PIC16F877.lkr (TinyRTX PIC16F877 linker file)
+//
+// Copyright 2014 Sycamore Software, Inc.  ** www.TinyRTX.com **
+// Distributed under the terms of the GNU Lesser General Purpose License v3
+//
+// This file is part of TinyRTX. TinyRTX is free software: you can redistribute
+// it and/or modify it under the terms of the GNU Lesser General Public License
+// version 3 as published by the Free Software Foundation.
+//
+// TinyRTX is distributed in the hope that it will be useful, but WITHOUT ANY
+// WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+// A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more
+// details.
+//
+// You should have received a copy of the GNU Lesser General Public License
+// (filename copying.lesser.txt) and the GNU General Public License (filename
+// copying.txt) along with TinyRTX.  If not, see <http://www.gnu.org/licenses/>.
+//
+// Revision history:
+//  15Oct03  SHiggins@TinyRTX.com  Add comments, rearrange for Project pd2p01.
+//                Deleted LIBPATH directive.
+//                Expanded from 16F872 to 16F877, added ICD space.
+//  31Oct03  SHiggins@TinyRTX.com  	Extensive revisions for major reorganization.
+//  28Jul14  SHiggins@TinyRTX.com  	Move .cinit to 0x2000 (unimplemented CODEPAGE).
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+// Define code pages in ROM.
+//
+CODEPAGE    NAME=p0_sisd_reset      START=0x0000    END=0x0003  PROTECTED   // 0x0004 locations.
+CODEPAGE    NAME=p0_sisd_interrupt  START=0x0004    END=0x003f  PROTECTED   // 0x003c locations.
+CODEPAGE    NAME=p0_srtx_general    START=0x0040    END=0x03ff              // 0x03c0 locations.
+CODEPAGE    NAME=p0_srtx_tables     START=0x0400    END=0x04ff              // 0x0100 locations. LINKNOTE: Does not cross 0xXX00 boundary.
+CODEPAGE    NAME=p0_user_general    START=0x0500    END=0x07ff              // 0x0300 locations.
+CODEPAGE    NAME=p1_user_tables     START=0x0800    END=0x08ff              // 0x0100 locations. LINKNOTE: Does not cross 0xXX00 boundary.
+CODEPAGE    NAME=p1_user_general    START=0x0900    END=0x0fff              // 0x0700 locations.
+CODEPAGE    NAME=p2_user_general    START=0x1000    END=0x17ff              // 0x0800 locations.
+CODEPAGE    NAME=p3_user_general    START=0x1800    END=0x1eff              // 0x0700 locations.
+CODEPAGE    NAME=p3_debug           START=0x1f00    END=0x1fff  PROTECTED   // 0x0100 locations. DEBUGGER
+CODEPAGE    NAME=.cinit             START=0x2000    END=0x2001              // 0x0002 locations. Bogus linker requirement
+//
+// Register files.
+//
+DATABANK    NAME=sfr0           START=0x0000    END=0x001f  PROTECTED   // Bank 0 SFR's.
+DATABANK   	NAME=sfr1           START=0x0080    END=0x009f  PROTECTED   // Bank 1 SFR's.
+DATABANK   	NAME=sfr2           START=0x0100    END=0x010f  PROTECTED   // Bank 2 SFR's.
+DATABANK   	NAME=sfr3           START=0x0180    END=0x018f  PROTECTED   // Bank 3 SFR's.
+//
+// Bank 0 General Purpose 0x0020-0x006f.
+// Bank 1 General Purpose 0x00a0-0x00ef.
+// Bank 2 General Purpose 0x0110-0x016f.
+// Bank 3 General Purpose 0x0190-0x01ef.
+//
+DATABANK    NAME=gpr0           START=0x020    END=0x06F                // Bank 0 SFR's.
+DATABANK    NAME=gpr1           START=0x0A0    END=0x0EF                // Bank 1 SFR's.
+DATABANK    NAME=gpr2           START=0x110    END=0x16F                // Bank 2 SFR's.
+DATABANK    NAME=gpr3           START=0x190    END=0x1E4                // Bank 3 SFR's.
+DATABANK    NAME=gpr3_debug     START=0x1E5    END=0x1EF    PROTECTED   // Bank 3 SFR's. DEBUGGER
+//
+// Bank 0,1,2,3 General Purpose all have same last 16 bytes.
+//
+SHAREBANK   NAME=shr0123_debug  START=0x0070    END=0x0070  PROTECTED   // Bank 0 GPR's. DEBUGGER
+SHAREBANK   NAME=shr0123_debug  START=0x00f0    END=0x00f0  PROTECTED   // Bank 1 GPR's. DEBUGGER
+SHAREBANK   NAME=shr0123_debug  START=0x0170    END=0x0170  PROTECTED   // Bank 2 GPR's. DEBUGGER
+SHAREBANK   NAME=shr0123_debug  START=0x01f0    END=0x01f0  PROTECTED   // Bank 3 GPR's. DEBUGGER
+SHAREBANK   NAME=shr0123        START=0x0071    END=0x007f              // Bank 0 GPR's.
+SHAREBANK   NAME=shr0123        START=0x00f1    END=0x00ff              // Bank 1 GPR's.
+SHAREBANK   NAME=shr0123        START=0x0171    END=0x017f              // Bank 2 GPR's.
+SHAREBANK   NAME=shr0123        START=0x01f1    END=0x01ff              // Bank 3 GPR's.
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+// ROM code space.
+//
+// SRTX and supporting routines go at beginning of page 0.
+//
+SECTION    NAME=SISD_ResetCodeSec   ROM=p0_sisd_reset       // Reset vector.
+SECTION    NAME=SISD_IntCodeSec     ROM=p0_sisd_interrupt   // Interrupt vector.
+SECTION    NAME=SISD_CodeSec        ROM=p0_srtx_general     // System Interrupt Service Director.
+SECTION    NAME=SRTX_CodeSec        ROM=p0_srtx_general     // System Real Time eXecutive.
+SECTION    NAME=SLCD_CodeSec        ROM=p0_srtx_general     // System LCD services.
+SECTION    NAME=SI2C_CodeSec        ROM=p0_srtx_general     // System I2C services.     LINKNOTE: Place on same page as SI2C_TableSec.
+SECTION    NAME=SI2C_TableSec       ROM=p0_srtx_tables      // System I2C lookup table. LINKNOTE: Must not cross 0xXX00 boundary.
+SECTION    NAME=SUSR_CodeSec        ROM=p0_srtx_general     // SRTX - User interface.
+SECTION    NAME=STRC_CodeSec        ROM=p0_srtx_general     // System Trace service.
+//
+// User application routines may use end of page 0 and everywhere else.
+//
+SECTION    NAME=TL_TableSec         ROM=p1_user_tables      // User Lookup tables.     LINKNOTE: Must not cross 0xXX00 boundary.
+SECTION    NAME=ULCD_TableSec       ROM=p1_user_tables      // User LCD lookup tables. LINKNOTE: Must not cross 0xXX00 boundary.
+SECTION    NAME=UI2C_TableSec       ROM=p1_user_tables      // User I2C lookup tables. LINKNOTE: Must not cross 0xXX00 boundary.
+SECTION    NAME=ULCD_CodeSec        ROM=p1_user_general     // User LCD routines.      LINKNOTE: Place on same page as ULCD_TableSec.
+SECTION    NAME=UI2C_CodeSec        ROM=p1_user_general     // User I2C routines.      LINKNOTE: Place on same page as UI2C_TableSec.
+SECTION    NAME=UADC_CodeSec        ROM=p1_user_general     // User ADC routines.
+SECTION    NAME=UAPP_CodeSec        ROM=p1_user_general     // Main user application.
+SECTION    NAME=SMUL_CodeSec        ROM=p2_user_general     // Math routines.
+SECTION    NAME=SBCD_CodeSec        ROM=p2_user_general     // BCD conversion routines.
+SECTION    NAME=cinit               ROM=.cinit              // Bogus ROMDATA section, linker always places.
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+// RAM data space.
+//
+// SISD context save variables must be in shared data space.  
+//
+SECTION    NAME=SISD_UdataShrSec    RAM=shr0123     // SISD context save.
+//
+// SRTX and supporting variables go at beginning of bank 0.
+//
+SECTION    NAME=SRTX_UdataSec       RAM=gpr0        // SRTX services. LINKNOTE: SRTX_UdataSec always in Bank 0.(?)
+SECTION    NAME=SUSR_UdataSec       RAM=gpr0        // SRTX - User interface variables.  
+SECTION    NAME=SLCD_UdataSec       RAM=gpr0        // System LCD services.           
+SECTION    NAME=SI2C_UdataSec       RAM=gpr0        // System I2C services.           
+SECTION    NAME=STRC_UdataSec       RAM=gpr3        // System Trace services.           
+//
+// User application variables may use end of bank 0 and everywhere else.
+//
+SECTION    NAME=UAPP_UdataSec       RAM=gpr1        // User application variables.
+SECTION    NAME=UADC_UdataSec       RAM=gpr1        // User ADC routines.
+SECTION    NAME=ULCD_UdataSec       RAM=gpr1        // User LCD routines.
+SECTION    NAME=UI2C_UdataSec       RAM=gpr1        // User I2C routines.
+SECTION    NAME=SM16_UdataSec       RAM=gpr2        // Fixed/Floating point library.
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+// Following directives necessary in future, not used yet.
+//
+//CODEPAGE   NAME=.idlocs         START=0x2000    END=0x2003  PROTECTED   // 0x0004 locations.
+//CODEPAGE   NAME=.config         START=0x2007    END=0x2007  PROTECTED   // 0x0001 locations.
+//CODEPAGE   NAME=eedata          START=0x2100    END=0x213F  PROTECTED   // 0x0040 locations.
+//SECTION    NAME=IDLOCS   ROM=.idlocs    // ID locations
+//SECTION    NAME=DEEPROM  ROM=eedata     // Data EEPROM
