@@ -1,27 +1,27 @@
         LIST
 ;*******************************************************************************
-; TinyRTX Filename: uadc.asm (User Analog to Digital Conversion routines)
+; tinyRTX Filename: uadc.asm (User Analog to Digital Conversion routines)
 ;
-; Copyright 2014 Sycamore Software, Inc.  ** www.TinyRTX.com **
+; Copyright 2014 Sycamore Software, Inc.  ** www.tinyRTX.com **
 ; Distributed under the terms of the GNU Lesser General Purpose License v3
 ;
-; This file is part of TinyRTX. TinyRTX is free software: you can redistribute
+; This file is part of tinyRTX. tinyRTX is free software: you can redistribute
 ; it and/or modify it under the terms of the GNU Lesser General Public License
 ; version 3 as published by the Free Software Foundation.
 ;
-; TinyRTX is distributed in the hope that it will be useful, but WITHOUT ANY
+; tinyRTX is distributed in the hope that it will be useful, but WITHOUT ANY
 ; WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
 ; A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more
 ; details.
 ;
 ; You should have received a copy of the GNU Lesser General Public License
 ; (filename copying.lesser.txt) and the GNU General Public License (filename
-; copying.txt) along with TinyRTX.  If not, see <http://www.gnu.org/licenses/>.
+; copying.txt) along with tinyRTX.  If not, see <http://www.gnu.org/licenses/>.
 ;
 ; Revision history:
-;   27Jan04  SHiggins@TinyRTX.com  Split out from main user application.  For PICdem2plus demo board.
-;   30Jan04  SHiggins@TinyRTX.com  Updated to use 1023 steps to full range, not 1024.
-;   29Jul14  SHiggins@TinyRTX.com  Move UADC_SetupDelay to inline in UADC_Trigger, reducing stack.
+;   27Jan04  SHiggins@tinyRTX.com  Split out from main user application.  For PICdem2plus demo board.
+;   30Jan04  SHiggins@tinyRTX.com  Updated to use 1023 steps to full range, not 1024.
+;   29Jul14  SHiggins@tinyRTX.com  Move UADC_SetupDelay to inline in UADC_Trigger, reducing stack.
 ;
 ;*******************************************************************************
 ;

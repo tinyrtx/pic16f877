@@ -24,4 +24,5 @@
 # Windows metafiles (Visio diagrams prepped for Word)
 *.wmf
 #
-
+# JPG images (tinyRTX logo)
+*.jpg

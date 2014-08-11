@@ -1,26 +1,26 @@
         LIST
 ;*******************************************************************************
-; TinyRTX Filename: srtx.asm (System Real Time eXecutive)
+; tinyRTX Filename: srtx.asm (System Real Time eXecutive)
 ;
-; Copyright 2014 Sycamore Software, Inc.  ** www.TinyRTX.com **
+; Copyright 2014 Sycamore Software, Inc.  ** www.tinyRTX.com **
 ; Distributed under the terms of the GNU Lesser General Purpose License v3
 ;
-; This file is part of TinyRTX. TinyRTX is free software: you can redistribute
+; This file is part of tinyRTX. tinyRTX is free software: you can redistribute
 ; it and/or modify it under the terms of the GNU Lesser General Public License
 ; version 3 as published by the Free Software Foundation.
 ;
-; TinyRTX is distributed in the hope that it will be useful, but WITHOUT ANY
+; tinyRTX is distributed in the hope that it will be useful, but WITHOUT ANY
 ; WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
 ; A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more
 ; details.
 ;
 ; You should have received a copy of the GNU Lesser General Public License
 ; (filename copying.lesser.txt) and the GNU General Public License (filename
-; copying.txt) along with TinyRTX.  If not, see <http://www.gnu.org/licenses/>.
+; copying.txt) along with tinyRTX.  If not, see <http://www.gnu.org/licenses/>.
 ;
 ; Revision history:
-;   16Oct03 SHiggins@TinyRTX.com	Created from scratch.
-;   30Jul14 SHiggins@TinyRTX.com    Reduce from 4 tasks to 3 to reduce stack needs.
+;   16Oct03 SHiggins@tinyRTX.com	Created from scratch.
+;   30Jul14 SHiggins@tinyRTX.com    Reduce from 4 tasks to 3 to reduce stack needs.
 ;
 ;*******************************************************************************
 ;
@@ -67,7 +67,7 @@ SRTX_CodeSec  CODE
 ;
 ;*******************************************************************************
 ;
-; TinyRTX System Real Time eXecutive  Initialization
+; tinyRTX System Real Time eXecutive  Initialization
 ;
 ; First, perform any application time-critical initialization which simply must be
 ; done as soon as power is applied or reset occurs.  Application should not initialize

@@ -1,12 +1,12 @@
         LIST
 ;*******************************************************************************
-; TinyRTX Filename: p16f877.inc (PIC16F877 register definitions)
+; tinyRTX Filename: p16f877.inc (PIC16F877 register definitions)
 ;
-; Distributed with TinyRTX.  Supplied by Microchip and subject to Microchip
+; Distributed with tinyRTX.  Supplied by Microchip and subject to Microchip
 ;   Technology Inc. Software License Agreement (reproduced below).
 ;
 ; Revision History:
-;  15Oct03  SHiggins@TinyRTX.com  Add TMR0IE(was T0IE), TMR0IF(was T0IF)
+;  15Oct03  SHiggins@tinyRTX.com  Add TMR0IE(was T0IE), TMR0IF(was T0IF)
 ;
 ;*******************************************************************************
 ;

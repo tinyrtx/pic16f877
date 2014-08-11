@@ -1,12 +1,12 @@
 ;*******************************************************************************
-; TinyRTX Filename: smul.INC (System MULtiply)
+; tinyRTX Filename: smul.INC (System MULtiply)
 ;       16x16 PIC16 fixed point multiply routines
 ;
-; Distributed with TinyRTX.  Supplied by Microchip and subject to Microchip
+; Distributed with tinyRTX.  Supplied by Microchip and subject to Microchip
 ;   Technology Inc. Software License Agreement (reproduced below).
 ;
 ; Revision History:
-;   04Sep03  SHiggins@TinyRTX.com  Eliminated all macros and routines except 16x16 unsigned multiply.
+;   04Sep03  SHiggins@tinyRTX.com  Eliminated all macros and routines except 16x16 unsigned multiply.
 ;               Configured for PIC16F872.
 ;               Put routine in FXM1616U_Code_Sec.
 ;
