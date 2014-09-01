@@ -20,10 +20,11 @@
 ; copying.txt) along with tinyRTX.  If not, see <http://www.gnu.org/licenses/>.
 ;
 ; Revision History:
-;  31Oct03  SHiggins@tinyRTX.com  Created to isolate user vars and routine calls.
-;  24Feb04  SHiggins@tinyRTX.com  Add trace.
-;  29Jul14  SHiggins@tinyRTX.com  Moved UAPP_Timer1Init to MACRO to save stack.
-;  30Jul14  SHiggins@tinyRTX.com  Reduce from 4 tasks to 3 to reduce stack needs.
+;  31Oct03  SHiggins@tinyRTX.com  	Created to isolate user vars and routine calls.
+;  24Feb04  SHiggins@tinyRTX.com  	Add trace.
+;  29Jul14  SHiggins@tinyRTX.com  	Moved UAPP_Timer1Init to MACRO to save stack.
+;  30Jul14  SHiggins@tinyRTX.com  	Reduce from 4 tasks to 3 to reduce stack needs.
+;  27Aug14  SHiggins@tinyRTX.com	Rename SUSR_TaskI2C to SUSR_ISR_I2C, remove SUSR_UdataSec.
 ;
 ;*******************************************************************************
 ;
@@ -37,14 +38,6 @@
         #include <ulcd.inc>
         #include <uadc.inc>
         #include <ui2c.inc>
-;
-;*******************************************************************************
-;
-;  RAM variable definitions.
-;
-SUSR_UdataSec       UDATA
-;
-SUSR_Temp           res     1   ; Place holder, no SUSR variables yet.
 ;
 ;*******************************************************************************
 ;
@@ -138,7 +131,6 @@ SUSR_Task3
         return
 ;
 ; User interface to TaskAD.
-; User handling when A/D conversion complete interrupt occurs.
 ;
         GLOBAL  SUSR_TaskADC
 SUSR_TaskADC
@@ -154,12 +146,12 @@ SUSR_TaskADC
 ;
 ; User handling when I2C event interrupt occurs.
 ;
-        GLOBAL  SUSR_TaskI2C
-SUSR_TaskI2C
-        smTrace STRC_TSK_BEG_I2C
+        GLOBAL  SUSR_ISR_I2C
+SUSR_ISR_I2C
+        smTrace STRC_ISR_BEG_I2C
         pagesel SI2C_Tbl_HwState
         call    SI2C_Tbl_HwState        ; Service I2C event.
-        smTrace STRC_TSK_END_I2C
+        smTrace STRC_ISR_END_I2C
         return
 ;
 ; User handling when I2C message completed.

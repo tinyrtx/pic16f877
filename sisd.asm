@@ -150,8 +150,8 @@ SISD_Director_CheckI2C
         btfss   PIR1, SSPIF             ; Skip if I2C interrupt flag set.
         goto    SISD_Director_Exit      ; I2C int flag not set, check other ints.
         bcf     PIR1, SSPIF             ; Clear I2C interrupt flag.
-        pagesel SUSR_TaskI2C
-        call    SUSR_TaskI2C            ; User handling when I2C event, must RETURN at end.
+        pagesel SUSR_ISR_I2C
+        call    SUSR_ISR_I2C            ; User handling when I2C event.
         pagesel SISD_Director_Exit
         goto    SISD_Director_Exit      ; Only execute single interrupt handler.
 ;;    IF I2C_COMPLETE_TASK == SCHEDULE_TASK
