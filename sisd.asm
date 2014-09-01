@@ -22,6 +22,10 @@
 ;   17Oct03 SHiggins@tinyRTX.com 	Created from scratch.
 ;   23Jul14 SHiggins@tinyRTX.com 	Move save/restore FSR from SISD_Director to 
 ;									to SISD_Interrupt
+;   27Aug14  SHiggins@tinyRTX.com  	Remove AD_COMPLETE_TASK and I2C_COMPLETE_TASK options.
+;									Both now have some interrupt handling and a task.
+;									SISD_Director_CheckI2C now calls SUSR_ISR_I2C.
+;;									Also moved SISD_Director inline with SISD_Interrupt.
 ;
 ;*******************************************************************************
 ;
@@ -134,19 +138,11 @@ SISD_Director_CheckADC
         bcf     PIR1, ADIF              ; Clear A/D interrupt flag.
         banksel PIE1
         bcf     PIE1, ADIE              ; Disable A/D interrupts.
-    IF AD_COMPLETE_TASK == AT_INTERRUPT
-        pagesel SUSR_TaskADC
-        call    SUSR_TaskADC            ; User handling when A/D complete, must RETURN at end.
-        pagesel SISD_Director_Exit
-        goto    SISD_Director_Exit      ; Only execute single interrupt handler.
-    ENDIF
-    IF AD_COMPLETE_TASK == SCHEDULE_TASK
         banksel SRTX_Sched_Cnt_TaskADC
         incfsz  SRTX_Sched_Cnt_TaskADC, F   ; Increment task schedule count.
         goto    SISD_Director_Exit          ; Task schedule count did not rollover.
         decf    SRTX_Sched_Cnt_TaskADC, F   ; Max task schedule count.
         goto    SISD_Director_Exit          ; Only execute single interrupt handler.
-   ENDIF
 ;
 ; Test for completion of I2C event.
 ;
@@ -154,19 +150,17 @@ SISD_Director_CheckI2C
         btfss   PIR1, SSPIF             ; Skip if I2C interrupt flag set.
         goto    SISD_Director_Exit      ; I2C int flag not set, check other ints.
         bcf     PIR1, SSPIF             ; Clear I2C interrupt flag.
-    IF I2C_COMPLETE_TASK == AT_INTERRUPT
         pagesel SUSR_TaskI2C
         call    SUSR_TaskI2C            ; User handling when I2C event, must RETURN at end.
         pagesel SISD_Director_Exit
         goto    SISD_Director_Exit      ; Only execute single interrupt handler.
-    ENDIF
-    IF I2C_COMPLETE_TASK == SCHEDULE_TASK
-        banksel SRTX_Sched_Cnt_TaskI2C
-        incfsz  SRTX_Sched_Cnt_TaskI2C, F   ; Increment task schedule count.
-        goto    SISD_Director_Exit          ; Task schedule count did not rollover.
-        decf    SRTX_Sched_Cnt_TaskI2C, F   ; Max task schedule count.
-        goto    SISD_Director_Exit          ; Only execute single interrupt handler.
-    ENDIF
+;;    IF I2C_COMPLETE_TASK == SCHEDULE_TASK
+;;        banksel SRTX_Sched_Cnt_TaskI2C
+;;        incfsz  SRTX_Sched_Cnt_TaskI2C, F   ; Increment task schedule count.
+;;        goto    SISD_Director_Exit          ; Task schedule count did not rollover.
+;;        decf    SRTX_Sched_Cnt_TaskI2C, F   ; Max task schedule count.
+;;        goto    SISD_Director_Exit          ; Only execute single interrupt handler.
+;;    ENDIF
 ;
 ; This point only reached if unknown interrupt occurs, any error handling can go here.
 ;

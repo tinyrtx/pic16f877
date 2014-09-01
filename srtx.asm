@@ -21,6 +21,8 @@
 ; Revision history:
 ;   16Oct03 SHiggins@tinyRTX.com	Created from scratch.
 ;   30Jul14 SHiggins@tinyRTX.com    Reduce from 4 tasks to 3 to reduce stack needs.
+;   27Aug14  SHiggins@tinyRTX.com  	Remove AD_COMPLETE_TASK and I2C_COMPLETE_TASK options.
+;									Both now have some interrupt handling and a task.
 ;
 ;*******************************************************************************
 ;
@@ -51,13 +53,10 @@ SRTX_Timer_Cnt_Task3    res     1
 SRTX_Sched_Cnt_Task1    res     1
 SRTX_Sched_Cnt_Task2    res     1
 SRTX_Sched_Cnt_Task3    res     1
-;
-; In cases of completing ADC or I2C in tasks, declare their task counters.
-;
 	GLOBAL  SRTX_Sched_Cnt_TaskADC
-SRTX_Sched_Cnt_TaskADC  res     1
+SRTX_Sched_Cnt_TaskADC  res     1	; Needs to be GLOBAL because other routines can schedule.
     GLOBAL  SRTX_Sched_Cnt_TaskI2C
-SRTX_Sched_Cnt_TaskI2C  res     1
+SRTX_Sched_Cnt_TaskI2C  res     1	; Needs to be GLOBAL because other routines can schedule.
 ;
 ;*******************************************************************************
 ;
@@ -110,13 +109,8 @@ SRTX_Init
         clrf    SRTX_Sched_Cnt_Task1    ; Clear all the task schedule counters.
         clrf    SRTX_Sched_Cnt_Task2
         clrf    SRTX_Sched_Cnt_Task3
-;
-    IF AD_COMPLETE_TASK == SCHEDULE_TASK
-        clrf    SRTX_Sched_Cnt_TaskADC	; Clear ADC task counter in case its used.
-    ENDIF
-    IF I2C_COMPLETE_TASK == SCHEDULE_TASK
-        clrf    SRTX_Sched_Cnt_TaskI2C	; Clear I2C task counter in case its used.
-    ENDIF
+        clrf    SRTX_Sched_Cnt_TaskADC
+        clrf    SRTX_Sched_Cnt_TaskI2C
 ;
         pagesel SRTX_Scheduler
         call    SRTX_Scheduler          ; Schedule all timebase tasks.
@@ -181,8 +175,8 @@ SRTX_Scheduler_Exit
 ;   No return from this routine.
 ;
 ; Priority (1 = highest):
-;	1: I2C (if configured to be completed in a scheduled task)
-;	2: ADC (if configured to be completed in a scheduled task)
+;	1: I2C
+;	2: ADC
 ;	3: Task1
 ;	4: Task2
 ;	5: Task3
@@ -191,24 +185,23 @@ SRTX_Scheduler_Exit
 ;
 SRTX_Dispatcher
 ;
-    IF I2C_COMPLETE_TASK == SCHEDULE_TASK
-        clrw
-		banksel	SRTX_Sched_Cnt_TaskI2C
-        addwf   SRTX_Sched_Cnt_TaskI2C, W   ; Check if non-zero schedule count.
-        btfsc   STATUS, Z                   ; Skip if task scheduled.
-        goto    SRTX_Dispatcher_CheckADC    ; Task not scheduled, check next task.
-        pagesel SUSR_TaskI2C
-        call    SUSR_TaskI2C                ; Invoke task.
-		banksel	SRTX_Sched_Cnt_TaskI2C
-        decfsz  SRTX_Sched_Cnt_TaskI2C, F   ; Dec schedule count, this invocation done.
-        nop                                 ; Trap, task was scheduled again before done.
-        pagesel SRTX_Dispatcher
-        goto    SRTX_Dispatcher             ; Test scheduled tasks starting w/highest priority task.
-    ENDIF
+;;    IF I2C_COMPLETE_TASK == SCHEDULE_TASK
+;;        clrw
+;;		banksel	SRTX_Sched_Cnt_TaskI2C
+;;        addwf   SRTX_Sched_Cnt_TaskI2C, W   ; Check if non-zero schedule count.
+;;        btfsc   STATUS, Z                   ; Skip if task scheduled.
+;;        goto    SRTX_Dispatcher_CheckADC    ; Task not scheduled, check next task.
+;;        pagesel SUSR_TaskI2C
+;;        call    SUSR_TaskI2C                ; Invoke task.
+;;		banksel	SRTX_Sched_Cnt_TaskI2C
+;;        decfsz  SRTX_Sched_Cnt_TaskI2C, F   ; Dec schedule count, this invocation done.
+;;        nop                                 ; Trap, task was scheduled again before done.
+;;        pagesel SRTX_Dispatcher
+;;        goto    SRTX_Dispatcher             ; Test scheduled tasks starting w/highest priority task.
+;;    ENDIF
 ;
 SRTX_Dispatcher_CheckADC
 ;
-    IF AD_COMPLETE_TASK == SCHEDULE_TASK
         clrw
 		banksel	SRTX_Sched_Cnt_TaskADC
         addwf   SRTX_Sched_Cnt_TaskADC, W   ; Check if non-zero schedule count.
@@ -221,7 +214,6 @@ SRTX_Dispatcher_CheckADC
         nop                                 ; Trap, task was scheduled again before done.
         pagesel SRTX_Dispatcher
         goto    SRTX_Dispatcher             ; Test scheduled tasks starting w/highest priority task.
-    ENDIF
 ;
 SRTX_Dispatcher_Check1
 ;

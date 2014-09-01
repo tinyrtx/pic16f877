@@ -19,8 +19,10 @@
 ; copying.txt) along with tinyRTX.  If not, see <http://www.gnu.org/licenses/>.
 ;
 ; Revision history:
-;   17Oct03  SHiggins@tinyRTX.com  Created from scratch.
-;   30Jul14  SHiggins@tinyRTX.com  Reduce from 4 tasks to 3 to reduce stack needs.
+;   17Oct03  SHiggins@tinyRTX.com  	Created from scratch.
+;   30Jul14  SHiggins@tinyRTX.com  	Reduce from 4 tasks to 3 to reduce stack needs.
+;   27Aug14  SHiggins@tinyRTX.com  	Remove AD_COMPLETE_TASK and I2C_COMPLETE_TASK options.
+;									Both now have some interrupt handling and a task.
 ;
 ;*******************************************************************************
        NOLIST
@@ -42,25 +44,4 @@ SRTX_CNT_INIT_TASK3     EQU     1
 ;
 SRTX_CNT_RELOAD_TASK1   EQU     0x01	;  1 = 100 ms
 SRTX_CNT_RELOAD_TASK2   EQU     0x0a	; 10 = 1.000 sec
-SRTX_CNT_RELOAD_TASK3   EQU     0x32	; 50 = 5.000 sec
-;
-AT_INTERRUPT        SET     0
-SCHEDULE_TASK       SET     1
-;
-; SRTX configuration options allow users's AD Complete task to execute either:
-;  a) directly from SISD interrupt handler, quicker but possible stack problems, or
-;  b) from task scheduled by SISS, more latency but less stack usage.
-; NOTE: Only one of the following two statements should be uncommented.
-;
-;AD_COMPLETE_TASK    SET     AT_INTERRUPT
-AD_COMPLETE_TASK    SET     SCHEDULE_TASK
-;
-; SRTX configuration options allow users's I2C interrupt task to execute either:
-;  a) directly from SISD interrupt handler, quicker but possible stack problems, or
-;  b) from task scheduled by SISS, more latency but less stack usage.
-; NOTE: Only one of the following two statements should be uncommented.
-;
-I2C_COMPLETE_TASK   SET     AT_INTERRUPT
-;I2C_COMPLETE_TASK   SET     SCHEDULE_TASK
-;
-        LIST
+SRTX_CNT_RELOAD_TASK3   EQU     0x14	; 20 = 2.000 sec

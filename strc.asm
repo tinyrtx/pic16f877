@@ -19,7 +19,8 @@
 ; copying.txt) along with tinyRTX.  If not, see <http://www.gnu.org/licenses/>.
 ;
 ; Revision history:
-;   20Feb04  SHiggins@tinyRTX.com Created from scratch.
+;   20Feb04 SHiggins@tinyRTX.com Created from scratch.
+;	27Aug24	SHiggins@tinyRTX.com Added interrupt protection to ensure trace validity.
 ;
 ;*******************************************************************************
 ;
@@ -37,6 +38,7 @@ STRC_BufferEnd  res     1                   ; Trace buffer end.
 STRC_Ptr        res     1                   ; Pointer to current location in trace buffer.
 STRC_TempFSR    res     1                   ; Saved copy of FSR.
 STRC_TempW      res     1                   ; Saved copy of W (input argument).
+STRC_TempINTCON res     1                   ; Saved copy of INTCON.
 ;
 ;*******************************************************************************
 ;
@@ -77,15 +79,27 @@ STRC_Trace
 ;
         banksel     STRC_TempW
         movwf       STRC_TempW          ; Save input arg.
+		movfw		INTCON				; Save INTCON.GIE.
+		movwf		STRC_TempINTCON
+		bcf			INTCON, GIE			; Disable interrupts.
         movfw       FSR
         movwf       STRC_TempFSR        ; Save FSR.
-;
+
         bankisel    STRC_Buffer         ; Set indirect data bank.
         incf        STRC_Ptr, F         ; Bump current pointer.
         movfw       STRC_Ptr            ; Get current pointer.
         movwf       FSR                 ; Move current pointer to indirect pointer.
         movfw       STRC_TempW          ; Retrieve input arg.
         movwf       INDF                ; Save input arg in buffer.
+;;
+;;        bankisel    STRC_Buffer         ; Set indirect data bank.
+;;        incf        STRC_Ptr, F         ; Bump current pointer.
+;;        movfw       STRC_Ptr            ; Get current pointer.
+;;        movwf       FSR                 ; Move current pointer to indirect pointer.
+;;        movfw       STRC_TempINTCON     ; Retrieve saved INTCON.
+;;		andlw		0xf0
+;;		addwf		STRC_TempW, W
+;;        movwf       INDF                ; Save input arg in buffer.
 ;
         movlw       STRC_BufferEnd      ; Buffer end addr goes in W.
         subwf       FSR, W              ; Subtract end addr(W) from current addr(FSR).
@@ -101,7 +115,9 @@ STRC_TraceFull
 ;  
 STRC_TraceExit
         movfw       STRC_TempFSR
-        movwf       FSR                 ; Restore FSR.
+        movwf       FSR                 	; Restore FSR.
+		btfsc		STRC_TempINTCON, GIE	; If saved GIE was set..
+		bsf			INTCON, GIE				; ..then re-enable interrupts.
         return
 ;
         end
