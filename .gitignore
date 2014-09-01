@@ -26,3 +26,6 @@
 #
 # JPG images (tinyRTX logo)
 *.jpg
+#
+# Zip archives
+*.zip
