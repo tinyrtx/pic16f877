@@ -21,7 +21,7 @@
 ; Revision history:
 ;   31Oct03  SHiggins@tinyRTX.com  	Created from scratch.
 ;   30Jul14  SHiggins@tinyRTX.com  	Reduce from 4 tasks to 3 to reduce stack needs.
-;   27Aug14  SHiggins@tinyRTX.com	Change SUSR_TaskI2C to SUSR_ISR_I2C.
+;   27Aug14  SHiggins@tinyRTX.com	Change SUSR_TaskI2C to SUSR_ISR_I2C, new SUSR_TaskI2C.
 ;
 ;*******************************************************************************
         NOLIST
@@ -34,7 +34,7 @@
         EXTERN      SUSR_Task3
         EXTERN      SUSR_TaskADC
         EXTERN      SUSR_ISR_I2C
-;;        EXTERN      SUSR_TaskI2C
+        EXTERN      SUSR_TaskI2C
         EXTERN      SUSR_TaskI2C_MsgDone
 ;
         LIST

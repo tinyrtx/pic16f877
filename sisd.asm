@@ -154,13 +154,6 @@ SISD_Director_CheckI2C
         call    SUSR_ISR_I2C            ; User handling when I2C event.
         pagesel SISD_Director_Exit
         goto    SISD_Director_Exit      ; Only execute single interrupt handler.
-;;    IF I2C_COMPLETE_TASK == SCHEDULE_TASK
-;;        banksel SRTX_Sched_Cnt_TaskI2C
-;;        incfsz  SRTX_Sched_Cnt_TaskI2C, F   ; Increment task schedule count.
-;;        goto    SISD_Director_Exit          ; Task schedule count did not rollover.
-;;        decf    SRTX_Sched_Cnt_TaskI2C, F   ; Max task schedule count.
-;;        goto    SISD_Director_Exit          ; Only execute single interrupt handler.
-;;    ENDIF
 ;
 ; This point only reached if unknown interrupt occurs, any error handling can go here.
 ;

@@ -25,6 +25,8 @@
 ;  29Jul14  SHiggins@tinyRTX.com  	Moved UAPP_Timer1Init to MACRO to save stack.
 ;  30Jul14  SHiggins@tinyRTX.com  	Reduce from 4 tasks to 3 to reduce stack needs.
 ;  27Aug14  SHiggins@tinyRTX.com	Rename SUSR_TaskI2C to SUSR_ISR_I2C, remove SUSR_UdataSec.
+;									New SUSR_TaskI2C now invokes UI2C_MsgTC74ProcessData.
+;									Replace usage of smTrace with smTraceL.
 ;
 ;*******************************************************************************
 ;
@@ -90,7 +92,7 @@ SUSR_Timebase
 ;
         GLOBAL  SUSR_Task1
 SUSR_Task1
-        smTrace STRC_TSK_BEG_1
+        smTraceL STRC_TSK_BEG_1
         banksel PORTB
         movlw   0x01
         xorwf   PORTB, F                ; Toggle LED 1.
@@ -99,14 +101,14 @@ SUSR_Task1
 ;
 ; UADC_Trigger enabled ADC interrupts.
 ;
-        smTrace STRC_TSK_END_1
+        smTraceL STRC_TSK_END_1
         return
 ;
 ; User interface to Task2.
 ;
         GLOBAL  SUSR_Task2
 SUSR_Task2
-        smTrace STRC_TSK_BEG_2
+        smTraceL STRC_TSK_BEG_2
         banksel PORTB
         movlw   0x02
         xorwf   PORTB, F                ; Toggle LED 2.
@@ -114,44 +116,54 @@ SUSR_Task2
         call    ULCD_RefreshLine1       ; Update LCD data buffer with scrolling message.
         pagesel SLCD_RefreshLine1
         call    SLCD_RefreshLine1       ; Send LCD data buffer to LCD.
-        smTrace STRC_TSK_END_2
+        smTraceL STRC_TSK_END_2
         return
 ;
 ; User interface to Task3.
 ;
         GLOBAL  SUSR_Task3
 SUSR_Task3
-        smTrace STRC_TSK_BEG_3
+        smTraceL STRC_TSK_BEG_3
         banksel PORTB
         movlw   0x04
         xorwf   PORTB, F                ; Toggle LED 3.
         pagesel UI2C_MsgTC74
         call    UI2C_MsgTC74			; Use I2C to get raw temperature from TC74.
-        smTrace STRC_TSK_END_3
+        smTraceL STRC_TSK_END_3
         return
 ;
 ; User interface to TaskAD.
 ;
         GLOBAL  SUSR_TaskADC
 SUSR_TaskADC
-        smTrace STRC_TSK_BEG_ADC
+        smTraceL STRC_TSK_BEG_ADC
         pagesel UADC_RawToASCII
         call    UADC_RawToASCII         ; Convert A/D result to ASCII msg for display.
         pagesel ULCD_RefreshLine2
         call    ULCD_RefreshLine2       ; Update LCD data buffer with A/D and temperature.
         pagesel SLCD_RefreshLine2
         call    SLCD_RefreshLine2       ; Send LCD data buffer to LCD.
-        smTrace STRC_TSK_END_ADC
+        smTraceL STRC_TSK_END_ADC
         return
 ;
 ; User handling when I2C event interrupt occurs.
 ;
         GLOBAL  SUSR_ISR_I2C
 SUSR_ISR_I2C
-        smTrace STRC_ISR_BEG_I2C
+        smTraceL STRC_ISR_BEG_I2C
         pagesel SI2C_Tbl_HwState
         call    SI2C_Tbl_HwState        ; Service I2C event.
-        smTrace STRC_ISR_END_I2C
+        smTraceL STRC_ISR_END_I2C
+        return
+;
+; User interface to TaskI2C.
+;
+        GLOBAL  SUSR_TaskI2C
+SUSR_TaskI2C
+        smTraceL STRC_TSK_BEG_I2C
+        pagesel UI2C_MsgTC74ProcessData
+        call    UI2C_MsgTC74ProcessData	; Process data from TC74.
+        smTraceL STRC_TSK_END_I2C
         return
 ;
 ; User handling when I2C message completed.

@@ -25,6 +25,7 @@
 //                Expanded from 16F872 to 16F877, added ICD space.
 //  31Oct03  SHiggins@tinyRTX.com  	Extensive revisions for major reorganization.
 //  28Jul14  SHiggins@tinyRTX.com  	Move .cinit to 0x2000 (unimplemented CODEPAGE).
+//  27Aug14  SHiggins@tinyRTX.com	Remove SUSR_UdataSec (was unused).
 //
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -111,7 +112,6 @@ SECTION    NAME=SISD_UdataShrSec    RAM=shr0123     // SISD context save.
 // SRTX and supporting variables go at beginning of bank 0.
 //
 SECTION    NAME=SRTX_UdataSec       RAM=gpr0        // SRTX services. LINKNOTE: SRTX_UdataSec always in Bank 0.(?)
-SECTION    NAME=SUSR_UdataSec       RAM=gpr0        // SRTX - User interface variables.  
 SECTION    NAME=SLCD_UdataSec       RAM=gpr0        // System LCD services.           
 SECTION    NAME=SI2C_UdataSec       RAM=gpr0        // System I2C services.           
 SECTION    NAME=STRC_UdataSec       RAM=gpr3        // System Trace services.           

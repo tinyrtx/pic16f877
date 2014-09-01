@@ -1,5 +1,5 @@
 MPLINK 4.49, Linker
-Linker Map File - Created Mon Sep 01 12:57:43 2014
+Linker Map File - Created Mon Sep 01 14:25:44 2014
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
@@ -7,18 +7,18 @@ Linker Map File - Created Mon Sep 01 12:57:43 2014
         SISD_ResetCodeSec       code   0x000000    program   0x000006
           SISD_IntCodeSec       code   0x000004    program   0x000026
              SISD_CodeSec       code   0x000040    program   0x00004c
-             SRTX_CodeSec       code   0x000066    program   0x0000f4
-             SLCD_CodeSec       code   0x0000e0    program   0x0001b6
-             SI2C_CodeSec       code   0x0001bb    program   0x00018e
-             SUSR_CodeSec       code   0x000282    program   0x0000ea
-             STRC_CodeSec       code   0x0002f7    program   0x000050
+             SRTX_CodeSec       code   0x000066    program   0x000114
+             SLCD_CodeSec       code   0x0000f0    program   0x0001b6
+             SI2C_CodeSec       code   0x0001cb    program   0x00018e
+             SUSR_CodeSec       code   0x000292    program   0x000102
+             STRC_CodeSec       code   0x000313    program   0x000050
             SI2C_TableSec       code   0x000400    program   0x00002c
             ULCD_TableSec       code   0x000800    program   0x0000cc
             UI2C_TableSec       code   0x000866    program   0x000014
              ULCD_CodeSec       code   0x000900    program   0x0000a8
-             UI2C_CodeSec       code   0x000954    program   0x0000c2
-             UADC_CodeSec       code   0x0009b5    program   0x0000e6
-             UAPP_CodeSec       code   0x000a28    program   0x00006a
+             UI2C_CodeSec       code   0x000954    program   0x0000d2
+             UADC_CodeSec       code   0x0009bd    program   0x0000e6
+             UAPP_CodeSec       code   0x000a30    program   0x00006a
              SMUL_CodeSec       code   0x001000    program   0x000078
              SBCD_CodeSec       code   0x00103c    program   0x000118
                    .cinit    romdata   0x002000    program   0x000004
@@ -40,13 +40,13 @@ Linker Map File - Created Mon Sep 01 12:57:43 2014
                            ---------   ---------      
                             0x000000    0x000002      
                             0x000004    0x000016      
-                            0x000040    0x00031e      
+                            0x000040    0x00033a      
                             0x000400    0x000415      
                             0x000800    0x00086f      
-                            0x000900    0x000a5c      
+                            0x000900    0x000a64      
                             0x001000    0x0010c7      
                             0x002000    0x002001      
-            1442 out of 8194 program addresses used, program memory utilization is 17%
+            1478 out of 8194 program addresses used, program memory utilization is 18%
 
 
 
@@ -62,29 +62,29 @@ Linker Map File - Created Mon Sep 01 12:57:43 2014
                  FXM1616U   0x001000    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\smul.asm
               LOOPUM1616A   0x00100a    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\smul.asm
               LOOPUM1616B   0x001010    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\smul.asm
-         SI2C_AckNackDone   0x000267    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-SI2C_AckNackDone_ReceiveEnable   0x00026f    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-             SI2C_MsgDone   0x000211    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-           SI2C_Msg_Write   0x000274    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-          SI2C_Msg_Wrt_Rd   0x00027b    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-            SI2C_ReadData   0x00024e    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-       SI2C_ReadData_Exit   0x000265    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-    SI2C_ReadData_SendAck   0x000262    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-   SI2C_ReadData_SendNack   0x00025e    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-       SI2C_ReceiveEnable   0x0001e7    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
- SI2C_ReceiveEnable_AckOK   0x0001f4    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-       SI2C_RestartEnable   0x0001d2    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
- SI2C_RestartEnable_AckOK   0x0001df    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-        SI2C_SendReadAddr   0x000226    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-       SI2C_SendWriteAddr   0x00021a    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-       SI2C_SlaveAckError   0x0001bb    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-         SI2C_StartEnable   0x0001c5    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-          SI2C_StopEnable   0x0001fc    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-    SI2C_StopEnable_AckOK   0x000209    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+         SI2C_AckNackDone   0x000277    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+SI2C_AckNackDone_ReceiveEnable   0x00027f    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+             SI2C_MsgDone   0x000221    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+           SI2C_Msg_Write   0x000284    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+          SI2C_Msg_Wrt_Rd   0x00028b    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+            SI2C_ReadData   0x00025e    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+       SI2C_ReadData_Exit   0x000275    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+    SI2C_ReadData_SendAck   0x000272    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+   SI2C_ReadData_SendNack   0x00026e    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+       SI2C_ReceiveEnable   0x0001f7    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+ SI2C_ReceiveEnable_AckOK   0x000204    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+       SI2C_RestartEnable   0x0001e2    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+ SI2C_RestartEnable_AckOK   0x0001ef    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+        SI2C_SendReadAddr   0x000236    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+       SI2C_SendWriteAddr   0x00022a    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+       SI2C_SlaveAckError   0x0001cb    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+         SI2C_StartEnable   0x0001d5    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+          SI2C_StopEnable   0x00020c    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+    SI2C_StopEnable_AckOK   0x000219    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
          SI2C_Tbl_HwState   0x000400    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-           SI2C_WriteData   0x000232    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-     SI2C_WriteData_AckOK   0x00023f    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-  SI2C_WriteData_SendByte   0x00024a    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+           SI2C_WriteData   0x000242    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+     SI2C_WriteData_AckOK   0x00024f    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+  SI2C_WriteData_SendByte   0x00025a    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
             SISD_Director   0x000040    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\sisd.asm
    SISD_Director_CheckADC   0x00004e    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\sisd.asm
    SISD_Director_CheckI2C   0x00005a    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\sisd.asm
@@ -92,51 +92,52 @@ SI2C_AckNackDone_ReceiveEnable   0x00026f    program     static C:\Users\Stephen
            SISD_Interrupt   0x000004    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\sisd.asm
        SISD_InterruptExit   0x00000e    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\sisd.asm
                SISD_Reset   0x000000    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\sisd.asm
-             SLCD_ChkBusy   0x0000e0    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
-             SLCD_Delay16   0x000140    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
-        SLCD_Delay16_Loop   0x000144    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
-              SLCD_Delay8   0x00013a    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
-         SLCD_Delay8_Loop   0x00013d    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
-                SLCD_Init   0x000149    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
-        SLCD_RefreshLine1   0x00018d    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
-        SLCD_RefreshLine2   0x0001a4    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
-        SLCD_RefreshLoop1   0x00019b    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
-        SLCD_RefreshLoop2   0x0001b2    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
-           SLCD_WriteByte   0x00010a    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
-         SLCD_WriteNibble   0x000114    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
-        SLCD_WriteNibble1   0x000124    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
-      SLCD_WriteNibbleCmd   0x000121    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
-     SLCD_WriteNibbleData   0x00011d    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
+             SLCD_ChkBusy   0x0000f0    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
+             SLCD_Delay16   0x000150    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
+        SLCD_Delay16_Loop   0x000154    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
+              SLCD_Delay8   0x00014a    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
+         SLCD_Delay8_Loop   0x00014d    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
+                SLCD_Init   0x000159    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
+        SLCD_RefreshLine1   0x00019d    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
+        SLCD_RefreshLine2   0x0001b4    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
+        SLCD_RefreshLoop1   0x0001ab    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
+        SLCD_RefreshLoop2   0x0001c2    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
+           SLCD_WriteByte   0x00011a    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
+         SLCD_WriteNibble   0x000124    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
+        SLCD_WriteNibble1   0x000134    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
+      SLCD_WriteNibbleCmd   0x000131    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
+     SLCD_WriteNibbleData   0x00012d    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
           SRTX_Dispatcher   0x00009d    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\srtx.asm
-   SRTX_Dispatcher_Check1   0x0000ad    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\srtx.asm
-   SRTX_Dispatcher_Check2   0x0000bd    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\srtx.asm
-   SRTX_Dispatcher_Check3   0x0000cd    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\srtx.asm
- SRTX_Dispatcher_CheckADC   0x00009d    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\srtx.asm
-   SRTX_Dispatcher_CheckX   0x0000dd    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\srtx.asm
+   SRTX_Dispatcher_Check1   0x0000bd    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\srtx.asm
+   SRTX_Dispatcher_Check2   0x0000cd    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\srtx.asm
+   SRTX_Dispatcher_Check3   0x0000dd    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\srtx.asm
+ SRTX_Dispatcher_CheckADC   0x0000ad    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\srtx.asm
+   SRTX_Dispatcher_CheckX   0x0000ed    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\srtx.asm
                 SRTX_Init   0x000066    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\srtx.asm
            SRTX_Scheduler   0x000085    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\srtx.asm
     SRTX_Scheduler_Check2   0x00008e    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\srtx.asm
     SRTX_Scheduler_Check3   0x000095    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\srtx.asm
       SRTX_Scheduler_Exit   0x00009c    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\srtx.asm
-                STRC_Init   0x0002f7    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\strc.asm
-            STRC_InitLoop   0x0002fe    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\strc.asm
-               STRC_Trace   0x000305    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\strc.asm
-           STRC_TraceExit   0x00031a    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\strc.asm
-           STRC_TraceFull   0x000317    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\strc.asm
-             SUSR_ISR_I2C   0x0002e8    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
-          SUSR_POR_PhaseA   0x000282    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
-          SUSR_POR_PhaseB   0x000284    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
-               SUSR_Task1   0x0002a3    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
-               SUSR_Task2   0x0002b3    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
-               SUSR_Task3   0x0002c6    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
-             SUSR_TaskADC   0x0002d6    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
-     SUSR_TaskI2C_MsgDone   0x0002f4    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
-            SUSR_Timebase   0x000294    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
-                UADC_Init   0x0009b5    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\uadc.asm
-          UADC_RawToASCII   0x0009ce    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\uadc.asm
-     UADC_SetupDelay_Loop   0x0009c5    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\uadc.asm
-             UADC_Trigger   0x0009c1    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\uadc.asm
-            UAPP_POR_Init   0x000a28    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\uapp.asm
+                STRC_Init   0x000313    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\strc.asm
+            STRC_InitLoop   0x00031a    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\strc.asm
+               STRC_Trace   0x000321    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\strc.asm
+           STRC_TraceExit   0x000336    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\strc.asm
+           STRC_TraceFull   0x000333    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\strc.asm
+             SUSR_ISR_I2C   0x0002f8    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
+          SUSR_POR_PhaseA   0x000292    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
+          SUSR_POR_PhaseB   0x000294    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
+               SUSR_Task1   0x0002b3    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
+               SUSR_Task2   0x0002c3    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
+               SUSR_Task3   0x0002d6    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
+             SUSR_TaskADC   0x0002e6    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
+             SUSR_TaskI2C   0x000304    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
+     SUSR_TaskI2C_MsgDone   0x000310    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
+            SUSR_Timebase   0x0002a4    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
+                UADC_Init   0x0009bd    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\uadc.asm
+          UADC_RawToASCII   0x0009d6    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\uadc.asm
+     UADC_SetupDelay_Loop   0x0009cd    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\uadc.asm
+             UADC_Trigger   0x0009c9    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\uadc.asm
+            UAPP_POR_Init   0x000a30    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\uapp.asm
                 UI2C_Init   0x000954    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\ui2c.asm
              UI2C_MsgDone   0x000961    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\ui2c.asm
              UI2C_MsgTC74   0x000965    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\ui2c.asm
@@ -144,7 +145,9 @@ SI2C_AckNackDone_ReceiveEnable   0x00026f    program     static C:\Users\Stephen
 UI2C_MsgTC74CheckStatusExit   0x000985    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\ui2c.asm
 UI2C_MsgTC74CheckStatusFailed   0x00097e    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\ui2c.asm
 UI2C_MsgTC74CheckStatusPassed   0x000982    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\ui2c.asm
-  UI2C_MsgTC74ProcessData   0x000990    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\ui2c.asm
+     UI2C_MsgTC74Complete   0x000990    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\ui2c.asm
+ UI2C_MsgTC74CompleteExit   0x00099b    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\ui2c.asm
+  UI2C_MsgTC74ProcessData   0x00099c    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\ui2c.asm
      UI2C_MsgTC74ReadData   0x000986    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\ui2c.asm
    UI2C_MsgTC74ReadStatus   0x00096e    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\ui2c.asm
         UI2C_Tbl_MsgState   0x000866    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\ui2c.asm
@@ -272,62 +275,63 @@ UI2C_MsgTC74CheckStatusPassed   0x000982    program     static C:\Users\Stephen\
     SRTX_Scheduler_Check3   0x000095    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\srtx.asm
       SRTX_Scheduler_Exit   0x00009c    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\srtx.asm
           SRTX_Dispatcher   0x00009d    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\srtx.asm
- SRTX_Dispatcher_CheckADC   0x00009d    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\srtx.asm
-   SRTX_Dispatcher_Check1   0x0000ad    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\srtx.asm
-   SRTX_Dispatcher_Check2   0x0000bd    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\srtx.asm
-   SRTX_Dispatcher_Check3   0x0000cd    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\srtx.asm
-   SRTX_Dispatcher_CheckX   0x0000dd    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\srtx.asm
-             SLCD_ChkBusy   0x0000e0    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
-           SLCD_WriteByte   0x00010a    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
-         SLCD_WriteNibble   0x000114    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
-     SLCD_WriteNibbleData   0x00011d    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
-      SLCD_WriteNibbleCmd   0x000121    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
-        SLCD_WriteNibble1   0x000124    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
-              SLCD_Delay8   0x00013a    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
-         SLCD_Delay8_Loop   0x00013d    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
-             SLCD_Delay16   0x000140    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
-        SLCD_Delay16_Loop   0x000144    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
-                SLCD_Init   0x000149    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
-        SLCD_RefreshLine1   0x00018d    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
-        SLCD_RefreshLoop1   0x00019b    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
-        SLCD_RefreshLine2   0x0001a4    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
-        SLCD_RefreshLoop2   0x0001b2    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
-       SI2C_SlaveAckError   0x0001bb    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-         SI2C_StartEnable   0x0001c5    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-       SI2C_RestartEnable   0x0001d2    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
- SI2C_RestartEnable_AckOK   0x0001df    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-       SI2C_ReceiveEnable   0x0001e7    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
- SI2C_ReceiveEnable_AckOK   0x0001f4    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-          SI2C_StopEnable   0x0001fc    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-    SI2C_StopEnable_AckOK   0x000209    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-             SI2C_MsgDone   0x000211    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-       SI2C_SendWriteAddr   0x00021a    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-        SI2C_SendReadAddr   0x000226    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-           SI2C_WriteData   0x000232    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-     SI2C_WriteData_AckOK   0x00023f    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-  SI2C_WriteData_SendByte   0x00024a    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-            SI2C_ReadData   0x00024e    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-   SI2C_ReadData_SendNack   0x00025e    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-    SI2C_ReadData_SendAck   0x000262    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-       SI2C_ReadData_Exit   0x000265    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-         SI2C_AckNackDone   0x000267    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-SI2C_AckNackDone_ReceiveEnable   0x00026f    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-           SI2C_Msg_Write   0x000274    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-          SI2C_Msg_Wrt_Rd   0x00027b    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
-          SUSR_POR_PhaseA   0x000282    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
-          SUSR_POR_PhaseB   0x000284    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
-            SUSR_Timebase   0x000294    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
-               SUSR_Task1   0x0002a3    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
-               SUSR_Task2   0x0002b3    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
-               SUSR_Task3   0x0002c6    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
-             SUSR_TaskADC   0x0002d6    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
-             SUSR_ISR_I2C   0x0002e8    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
-     SUSR_TaskI2C_MsgDone   0x0002f4    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
-                STRC_Init   0x0002f7    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\strc.asm
-            STRC_InitLoop   0x0002fe    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\strc.asm
-               STRC_Trace   0x000305    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\strc.asm
-           STRC_TraceFull   0x000317    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\strc.asm
-           STRC_TraceExit   0x00031a    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\strc.asm
+ SRTX_Dispatcher_CheckADC   0x0000ad    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\srtx.asm
+   SRTX_Dispatcher_Check1   0x0000bd    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\srtx.asm
+   SRTX_Dispatcher_Check2   0x0000cd    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\srtx.asm
+   SRTX_Dispatcher_Check3   0x0000dd    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\srtx.asm
+   SRTX_Dispatcher_CheckX   0x0000ed    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\srtx.asm
+             SLCD_ChkBusy   0x0000f0    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
+           SLCD_WriteByte   0x00011a    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
+         SLCD_WriteNibble   0x000124    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
+     SLCD_WriteNibbleData   0x00012d    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
+      SLCD_WriteNibbleCmd   0x000131    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
+        SLCD_WriteNibble1   0x000134    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
+              SLCD_Delay8   0x00014a    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
+         SLCD_Delay8_Loop   0x00014d    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
+             SLCD_Delay16   0x000150    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
+        SLCD_Delay16_Loop   0x000154    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
+                SLCD_Init   0x000159    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
+        SLCD_RefreshLine1   0x00019d    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
+        SLCD_RefreshLoop1   0x0001ab    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
+        SLCD_RefreshLine2   0x0001b4    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
+        SLCD_RefreshLoop2   0x0001c2    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\slcd.asm
+       SI2C_SlaveAckError   0x0001cb    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+         SI2C_StartEnable   0x0001d5    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+       SI2C_RestartEnable   0x0001e2    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+ SI2C_RestartEnable_AckOK   0x0001ef    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+       SI2C_ReceiveEnable   0x0001f7    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+ SI2C_ReceiveEnable_AckOK   0x000204    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+          SI2C_StopEnable   0x00020c    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+    SI2C_StopEnable_AckOK   0x000219    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+             SI2C_MsgDone   0x000221    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+       SI2C_SendWriteAddr   0x00022a    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+        SI2C_SendReadAddr   0x000236    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+           SI2C_WriteData   0x000242    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+     SI2C_WriteData_AckOK   0x00024f    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+  SI2C_WriteData_SendByte   0x00025a    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+            SI2C_ReadData   0x00025e    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+   SI2C_ReadData_SendNack   0x00026e    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+    SI2C_ReadData_SendAck   0x000272    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+       SI2C_ReadData_Exit   0x000275    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+         SI2C_AckNackDone   0x000277    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+SI2C_AckNackDone_ReceiveEnable   0x00027f    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+           SI2C_Msg_Write   0x000284    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+          SI2C_Msg_Wrt_Rd   0x00028b    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
+          SUSR_POR_PhaseA   0x000292    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
+          SUSR_POR_PhaseB   0x000294    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
+            SUSR_Timebase   0x0002a4    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
+               SUSR_Task1   0x0002b3    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
+               SUSR_Task2   0x0002c3    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
+               SUSR_Task3   0x0002d6    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
+             SUSR_TaskADC   0x0002e6    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
+             SUSR_ISR_I2C   0x0002f8    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
+             SUSR_TaskI2C   0x000304    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
+     SUSR_TaskI2C_MsgDone   0x000310    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\susr.asm
+                STRC_Init   0x000313    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\strc.asm
+            STRC_InitLoop   0x00031a    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\strc.asm
+               STRC_Trace   0x000321    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\strc.asm
+           STRC_TraceFull   0x000333    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\strc.asm
+           STRC_TraceExit   0x000336    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\strc.asm
          SI2C_Tbl_HwState   0x000400    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\si2c.asm
          ULCD_TableLookup   0x000800    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\ulcd.asm
         UI2C_Tbl_MsgState   0x000866    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\ui2c.asm
@@ -345,12 +349,14 @@ UI2C_MsgTC74CheckStatusFailed   0x00097e    program     static C:\Users\Stephen\
 UI2C_MsgTC74CheckStatusPassed   0x000982    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\ui2c.asm
 UI2C_MsgTC74CheckStatusExit   0x000985    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\ui2c.asm
      UI2C_MsgTC74ReadData   0x000986    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\ui2c.asm
-  UI2C_MsgTC74ProcessData   0x000990    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\ui2c.asm
-                UADC_Init   0x0009b5    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\uadc.asm
-             UADC_Trigger   0x0009c1    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\uadc.asm
-     UADC_SetupDelay_Loop   0x0009c5    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\uadc.asm
-          UADC_RawToASCII   0x0009ce    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\uadc.asm
-            UAPP_POR_Init   0x000a28    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\uapp.asm
+     UI2C_MsgTC74Complete   0x000990    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\ui2c.asm
+ UI2C_MsgTC74CompleteExit   0x00099b    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\ui2c.asm
+  UI2C_MsgTC74ProcessData   0x00099c    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\ui2c.asm
+                UADC_Init   0x0009bd    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\uadc.asm
+             UADC_Trigger   0x0009c9    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\uadc.asm
+     UADC_SetupDelay_Loop   0x0009cd    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\uadc.asm
+          UADC_RawToASCII   0x0009d6    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\uadc.asm
+            UAPP_POR_Init   0x000a30    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\uapp.asm
                  FXM1616U   0x001000    program     extern C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\smul.asm
               LOOPUM1616A   0x00100a    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\smul.asm
               LOOPUM1616B   0x001010    program     static C:\Users\Stephen\Documents\SW Projects\TinyRTX PIC16F877\smul.asm

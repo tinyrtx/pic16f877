@@ -92,14 +92,16 @@ STRC_Trace
         movfw       STRC_TempW          ; Retrieve input arg.
         movwf       INDF                ; Save input arg in buffer.
 ;;
-;;        bankisel    STRC_Buffer         ; Set indirect data bank.
-;;        incf        STRC_Ptr, F         ; Bump current pointer.
-;;        movfw       STRC_Ptr            ; Get current pointer.
-;;        movwf       FSR                 ; Move current pointer to indirect pointer.
-;;        movfw       STRC_TempINTCON     ; Retrieve saved INTCON.
+;; Experimental code to trace GIE status along with single nibble task/ISR trace code.
+;;
+;;		bankisel    STRC_Buffer         ; Set indirect data bank.
+;;		incf        STRC_Ptr, F         ; Bump current pointer.
+;;		movfw       STRC_Ptr            ; Get current pointer.
+;;		movwf       FSR                 ; Move current pointer to indirect pointer.
+;;		movfw       STRC_TempINTCON     ; Retrieve saved INTCON.
 ;;		andlw		0xf0
 ;;		addwf		STRC_TempW, W
-;;        movwf       INDF                ; Save input arg in buffer.
+;;		movwf       INDF                ; Save input arg in buffer.
 ;
         movlw       STRC_BufferEnd      ; Buffer end addr goes in W.
         subwf       FSR, W              ; Subtract end addr(W) from current addr(FSR).

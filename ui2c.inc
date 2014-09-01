@@ -20,9 +20,11 @@
 ;
 ; Revision history:
 ;   11Nov03  SHiggins@tinyRTX.com  Created from scratch.
+;   27Aug14  SHiggins@tinyRTX.com  Added UI2C_MsgTC74ProcessData.
 ;
 ;*******************************************************************************
 ;
         EXTERN      UI2C_Init
         EXTERN      UI2C_MsgTC74
         EXTERN      UI2C_MsgDone
+		EXTERN      UI2C_MsgTC74ProcessData

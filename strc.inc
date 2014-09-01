@@ -21,6 +21,7 @@
 ; Revision history:
 ;   20Feb04  SHiggins@tinyRTX.com  Created from scratch.
 ;   27Aug14  SHiggins@tinyRTX.com  Added STRC_ISR_BEG_I2C and STRC_ISR_END_I2C.
+;   01Sep14  SHiggins@tinyRTX.com  Changed smTrace to smTraceL, added smTraceW.
 ;
 ;*********************************************************************************************
         NOLIST
@@ -41,10 +42,17 @@ STRC_ISR_END_I2C    EQU     0x64
 STRC_TSK_BEG_ADC    EQU     0x71
 STRC_TSK_END_ADC    EQU     0x72
 ;
-; smTrace: System Macro Trace: add entry to Trace buffer if enabled.
+; smTraceL: System Macro Trace with Literal: add entry to Trace buffer if enabled.
 ;
-smTrace MACRO   smTraceArg
-        movlw   smTraceArg
-        pagesel STRC_Trace
-        call    STRC_Trace
-        ENDM
+smTraceL	MACRO   smTraceArg
+        	movlw   smTraceArg
+			pagesel STRC_Trace
+        	call    STRC_Trace
+        	ENDM
+;
+; smTraceW: System Macro Trace with W: add entry to Trace buffer if enabled.
+;
+smTraceW	MACRO
+			pagesel STRC_Trace
+        	call    STRC_Trace
+        	ENDM

@@ -19,12 +19,16 @@
 ; copying.txt) along with tinyRTX.  If not, see <http://www.gnu.org/licenses/>.
 ;
 ; Revision history:
-;   16Oct03 SHiggins@tinyRTX.com Created from scratch for PICdem2plus demo board.
+;	16Oct03	SHiggins@tinyRTX.com	Created from scratch for PICdem2plus demo board.
+;   27Aug14 SHiggins@tinyRTX.com 	When msgs complete invoke UI2C_MsgTC74Complete
+;									to schedule task. Then SRTX_Dispatcher will invoke
+;									UI2C_MsgTC74ProcessData as proper task.
 ;
 ;*******************************************************************************
 ;
         errorlevel -302	
         #include    <p16f877.inc>
+        #include    <srtx.inc>
         #include    <si2c.inc>
         #include    <sm16.inc>
         #include    <sbcd.inc>
@@ -80,7 +84,7 @@ UI2C_Tbl_MsgState
         goto    UI2C_MsgTC74ReadStatus  ; S 0x9a(W) (ACK) 0x01(W) (ACK) RS 0x9b(R) (ACK) 0x?? NACK P =  0
         goto    UI2C_MsgTC74CheckStatus ; Check received status, retry or proceed                    =  1
         goto    UI2C_MsgTC74ReadData    ; S 0x9a(W) (ACK) 0x00(W) (ACK) RS 0x9b(R) (ACK) 0x?? NACK P =  2
-        goto    UI2C_MsgTC74ProcessData ; Message complete, process read temperature data            =  3
+        goto    UI2C_MsgTC74Complete	; Message complete, schedule task to process temperature     =  3
 ;
 ; NOTE: THIS UI2C_Tbl_MsgState TABLE DEFINITION IS LINKED TO #define's ABOVE.
 ;
@@ -238,24 +242,44 @@ UI2C_MsgTC74ReadData
         pagesel SI2C_Msg_Wrt_Rd
         goto    SI2C_Msg_Wrt_Rd     ; Start message.
 ;
+;
+;*******************************************************************************
+;
+; UI2C_MsgTC74Complete schedules task to process data.  Then interrupt can exit.
+; SRTX Dispatcher will find task scheduled and invoke UI2C_MsgTC74ProcessData.
+;
+UI2C_MsgTC74Complete
+;
+; Save the raw temperature data in the previous message from the TC74 device.
+;
+        banksel SI2C_DataByteRcv00
+        movfw   SI2C_DataByteRcv00          ; Get TC74 data from msg read data byte.
+        banksel UI2C_TC74Data
+        movwf   UI2C_TC74Data               ; Save raw data.
+;;		smTraceW
+;
+        banksel SRTX_Sched_Cnt_TaskI2C
+       	incfsz  SRTX_Sched_Cnt_TaskI2C, F   ; Increment task schedule count.
+        goto    UI2C_MsgTC74CompleteExit    ; Task schedule count did not rollover.
+        decf    SRTX_Sched_Cnt_TaskI2C, F   ; Max task schedule count.
+;
+UI2C_MsgTC74CompleteExit
+		return
+;
 ;*******************************************************************************
 ;
 ; UI2C_MsgTC74ProcessData msg converts temperature data already read from the device.
 ;
+        GLOBAL  UI2C_MsgTC74ProcessData
 UI2C_MsgTC74ProcessData
 ;
 ; Use the raw temperature data in the previous message from the TC74 device.
-;   Convert it to ASCII and put it in a buffer so it is displayed on the LCD.
-;
-        banksel SI2C_DataByteRcv00
-        movfw   SI2C_DataByteRcv00              ; Get TC74 data from msg read data byte.
-        banksel UI2C_TC74Data
-        movwf   UI2C_TC74Data                   ; Save raw data.
-;
+; Convert it to ASCII and put it in a buffer so it is displayed on the LCD.
 ; Assume positive temperature from 0 - 127 deg C, raw data byte is 0x00 - 0x7f.
 ; Convert from engineering units to BCD.
 ;
         movlw   0x7f
+        banksel UI2C_TC74Data
         andwf   UI2C_TC74Data, W                ; AND off high bit to force positive temps.
         banksel BARGB0
         movwf   BARGB0
