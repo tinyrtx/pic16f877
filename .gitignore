@@ -18,14 +18,5 @@
 # Version control file
 *.mcs
 #
-# Visio diagrams
-*.vsd
-#
-# Windows metafiles (Visio diagrams prepped for Word)
-*.wmf
-#
-# JPG images (tinyRTX logo)
-*.jpg
-#
 # Zip archives
 *.zip
