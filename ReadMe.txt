@@ -20,7 +20,7 @@
  Revision history:
    06Aug14  SHiggins@tinyRTX.com  Created from scratch.
    11Aug14  SHiggins@tinyRTX.com  Added .gitignore.
-   02Sep14  SHiggins@tinyRTX.com  Added *.vsd, *.wmf, *.jpg 
+   02Sep14  SHiggins@tinyRTX.com  Added *.vsd, *.wmf, *.jpg. Added .zip contents.
 
 *********************************************************************************************
 
@@ -31,7 +31,7 @@ Initial population of files:
 *.lkr  - Linker directive file
 *.txt  - ReadMe text (this file) and GNU license texts
 *.docx - User Manual (MS Word 2007 format)
-*.map  - MPLAB IDE resultant project map (included because part of MPLAB IDE project)
+*.map  - MPLAB IDE linker result map
 *.mcp  - MPLAB IDE project file
 *.mcw  - MPLAB IDE workspace file
 *.wtch - MPLAB IDE watch view files
@@ -42,3 +42,16 @@ Added files to support documentations:
 *.vsd  - Visio diagrams
 *.wmf  - Windows metafiles (Visio diagrams prepped for Word)
 *.jpg  - JPG images (tinyRTX logo)
+
+
+*********************************************************************************************
+
+These files are generally included in the .zip archive for a release:
+
+*.asm  - Assembler language source files
+*.inc  - Assembler language include files
+*.lkr  - Linker directive file
+*.map  - MPLAB IDE linker result map
+*.mcp  - MPLAB IDE project file
+*.mcw  - MPLAB IDE workspace file
+*.txt  - ReadMe text (this file) and GNU license texts
